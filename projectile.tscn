@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhy111f7h1c4o"]
+
+[ext_resource type="Script" path="res://projectile.gd" id="1_ovl61"]
+[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://Enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_cjfcl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0ny5"]
+radius = 6.0
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 18
+script = ExtResource("1_ovl61")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p0ny5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_cjfcl")
+region_enabled = true
+region_rect = Rect2(0, 832, 16, 16)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
