@@ -1,6 +1,7 @@
 extends CharacterStateMachine
 class_name Enemy
 
+
 @export var hp : int = 3
 
 func hit(damage_number: int):

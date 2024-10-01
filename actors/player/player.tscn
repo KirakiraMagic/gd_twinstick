@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://1b5q6glxdb0k"]
+[gd_scene load_steps=13 format=3 uid="uid://1b5q6glxdb0k"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_mhq7y"]
 [ext_resource type="Texture2D" uid="uid://b0fwu8ichxvn5" path="res://Enviroment/Modern tiles_Free/Characters_free/Amelia_16x16.png" id="2_5uiy0"]
+[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://Enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="3_wp8ok"]
+[ext_resource type="PackedScene" uid="uid://c3ppaqrqb4xft" path="res://hud.tscn" id="4_3kk8r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_muy1q"]
 
@@ -132,15 +134,13 @@ _data = {
 "walk_right": SubResource("Animation_de2j4")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_mhq7y")
 
 [node name="MainCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_muy1q")
-
-[node name="BulletSpawnPoint" type="Marker2D" parent="."]
 
 [node name="MainSprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -157,3 +157,17 @@ libraries = {
 }
 
 [node name="States" type="Node" parent="."]
+
+[node name="Weapon" type="Marker2D" parent="."]
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="Weapon"]
+position = Vector2(12, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapon"]
+position = Vector2(12, 0)
+rotation = 1.5708
+texture = ExtResource("3_wp8ok")
+region_enabled = true
+region_rect = Rect2(84, 583, 17, 13)
+
+[node name="HUD" parent="." instance=ExtResource("4_3kk8r")]

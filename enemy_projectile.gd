@@ -1,6 +1,6 @@
 extends Area2D
 
-const PROJECTILE_SPEED = 300
+const PROJECTILE_SPEED = 100
 var forward = Vector2.ZERO
 
 func _physics_process(delta):
@@ -12,7 +12,7 @@ func _on_timer_timeout():
 	pass # Replace with function body.
 
 func _on_body_entered(body):
-	if body is Enemy:
+	if body.is_in_group("player"):
 		body.hit(1)
 		queue_free()
 	if body.is_in_group("terrain") or body.is_in_group("shield"):

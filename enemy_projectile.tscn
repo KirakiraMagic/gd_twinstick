@@ -1,24 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhy111f7h1c4o"]
+[gd_scene load_steps=4 format=3 uid="uid://hsm73r2idek3"]
 
-[ext_resource type="Script" path="res://projectile.gd" id="1_ovl61"]
-[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://Enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_cjfcl"]
+[ext_resource type="Script" path="res://enemy_projectile.gd" id="1_y0go2"]
+[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://Enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_43yy6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0ny5"]
 radius = 6.0
 
-[node name="Projectile" type="Area2D"]
-collision_layer = 4
-collision_mask = 50
-script = ExtResource("1_ovl61")
+[node name="EnemyProjectile" type="Area2D"]
+collision_layer = 8
+collision_mask = 17
+script = ExtResource("1_y0go2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p0ny5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_cjfcl")
+texture = ExtResource("2_43yy6")
 region_enabled = true
-region_rect = Rect2(0, 832, 16, 16)
+region_rect = Rect2(180, 212, 9, 8)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

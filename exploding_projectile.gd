@@ -26,6 +26,6 @@ func _on_body_entered(body):
 	if body is Enemy:
 		body.hit(1)
 		queue_free()
-	if body.is_in_group("terrain"):
+	if body.is_in_group("terrain") or body.is_in_group("shield"):
 		queue_free()
 	pass

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://88q44gf34xxv"]
+
+[ext_resource type="Script" path="res://sword.gd" id="1_edynv"]
+[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://Enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="1_wl3b7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w77dq"]
+size = Vector2(27, 4)
+
+[node name="Sword" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_edynv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(25.5, 0)
+shape = SubResource("RectangleShape2D_w77dq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(26, 0)
+texture = ExtResource("1_wl3b7")
+region_enabled = true
+region_rect = Rect2(121, 661, 28, 4)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
