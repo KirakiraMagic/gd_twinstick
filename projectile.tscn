@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bhy111f7h1c4o"]
 
 [ext_resource type="Script" path="res://projectile.gd" id="1_ovl61"]
-[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://Enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_cjfcl"]
+[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_cjfcl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0ny5"]
 radius = 6.0

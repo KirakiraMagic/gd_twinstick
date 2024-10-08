@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://poj1ahutlvfx"]
 
-[ext_resource type="Texture2D" uid="uid://iysbp4270bpn" path="res://Enviroment/Modern tiles_Free/Interiors_free/16x16/Room_Builder_free_16x16.png" id="1_258ot"]
-[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://Enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_si8u1"]
+[ext_resource type="Texture2D" uid="uid://iysbp4270bpn" path="res://enviroment/Modern tiles_Free/Interiors_free/16x16/Room_Builder_free_16x16.png" id="1_258ot"]
+[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_si8u1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_livbw"]
 texture = ExtResource("1_258ot")

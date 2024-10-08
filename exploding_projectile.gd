@@ -23,7 +23,7 @@ func shoot_projectile(direction : Vector2):
 	get_parent().add_child(new_projectile)
 
 func _on_body_entered(body):
-	if body is Enemy:
+	if body.is_in_group("Enemy"):
 		body.hit(1)
 		queue_free()
 	if body.is_in_group("terrain") or body.is_in_group("shield"):

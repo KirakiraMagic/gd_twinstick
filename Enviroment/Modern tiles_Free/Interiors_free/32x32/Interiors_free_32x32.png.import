@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cimialnkkwaej"
-path="res://.godot/imported/Interiors_free_32x32.png-1288da734b3066c5e351b4c1da306e54.ctex"
+path="res://.godot/imported/Interiors_free_32x32.png-dd61cee9ca555142193d9bb42d58af1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enviroment/Modern tiles_Free/Interiors_free/32x32/Interiors_free_32x32.png"
-dest_files=["res://.godot/imported/Interiors_free_32x32.png-1288da734b3066c5e351b4c1da306e54.ctex"]
+source_file="res://enviroment/Modern tiles_Free/Interiors_free/32x32/Interiors_free_32x32.png"
+dest_files=["res://.godot/imported/Interiors_free_32x32.png-dd61cee9ca555142193d9bb42d58af1b.ctex"]
 
 [params]
 

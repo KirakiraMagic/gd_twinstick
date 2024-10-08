@@ -12,7 +12,7 @@ func _on_timer_timeout():
 	pass # Replace with function body.
 
 func _on_body_entered(body):
-	if body is Enemy:
+	if body.has_method("hit"):
 		body.hit(1)
 		queue_free()
 	if body.is_in_group("terrain") or body.is_in_group("shield"):

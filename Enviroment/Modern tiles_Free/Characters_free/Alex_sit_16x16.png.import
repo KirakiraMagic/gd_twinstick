@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpjbvm7erbtjo"
-path="res://.godot/imported/Alex_sit_16x16.png-c75f60664ae97186cb90dace2756071c.ctex"
+path="res://.godot/imported/Alex_sit_16x16.png-463be844cd3eebe3690a3ef80d9a2e9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enviroment/Modern tiles_Free/Characters_free/Alex_sit_16x16.png"
-dest_files=["res://.godot/imported/Alex_sit_16x16.png-c75f60664ae97186cb90dace2756071c.ctex"]
+source_file="res://enviroment/Modern tiles_Free/Characters_free/Alex_sit_16x16.png"
+dest_files=["res://.godot/imported/Alex_sit_16x16.png-463be844cd3eebe3690a3ef80d9a2e9d.ctex"]
 
 [params]
 

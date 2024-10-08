@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://1b5q6glxdb0k"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_mhq7y"]
-[ext_resource type="Texture2D" uid="uid://b0fwu8ichxvn5" path="res://Enviroment/Modern tiles_Free/Characters_free/Amelia_16x16.png" id="2_5uiy0"]
-[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://Enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="3_wp8ok"]
+[ext_resource type="Texture2D" uid="uid://b0fwu8ichxvn5" path="res://enviroment/Modern tiles_Free/Characters_free/Amelia_16x16.png" id="2_5uiy0"]
+[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="3_wp8ok"]
 [ext_resource type="PackedScene" uid="uid://c3ppaqrqb4xft" path="res://hud.tscn" id="4_3kk8r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_muy1q"]

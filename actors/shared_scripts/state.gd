@@ -1,13 +1,10 @@
 extends Node
 class_name State
 
-signal change_state(new_statez: State)
+signal change_state(new_state: State)
 
 var main_sprite : Sprite2D
 var body : CharacterStateMachine
-
-func initialize():
-	pass
 
 func on_enter_state():
 	pass
@@ -17,6 +14,3 @@ func on_exit_state():
 
 func process_state(delta: float):
 	pass
-
-func process_input_event(event: InputEvent):
-	pass 

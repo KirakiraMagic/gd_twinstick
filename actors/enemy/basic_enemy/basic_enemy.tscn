@@ -1,21 +1,18 @@
 [gd_scene load_steps=24 format=3 uid="uid://ynkmsw2c6vee"]
 
-[ext_resource type="Script" path="res://actors/enemy/basic_enemy.gd" id="1_n0g3n"]
-[ext_resource type="Script" path="res://actors/enemy/idle.gd" id="2_bacvq"]
-[ext_resource type="Texture2D" uid="uid://dp5jgkluioumu" path="res://Enviroment/Modern tiles_Free/Characters_free/Adam_16x16.png" id="2_nek5t"]
-[ext_resource type="Script" path="res://actors/enemy/chasing.gd" id="3_fa2kb"]
+[ext_resource type="Script" path="res://actors/enemy/basic_enemy/basic_enemy.gd" id="1_n0g3n"]
+[ext_resource type="Script" path="res://actors/enemy/basic_enemy/idle.gd" id="2_bacvq"]
+[ext_resource type="Texture2D" uid="uid://dp5jgkluioumu" path="res://enviroment/Modern tiles_Free/Characters_free/Adam_16x16.png" id="2_nek5t"]
+[ext_resource type="Script" path="res://actors/enemy/basic_enemy/chasing.gd" id="3_fa2kb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgult"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vh6pj"]
-radius = 113.137
 
 [sub_resource type="Animation" id="Animation_gynqb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("MainSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +30,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("MainSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,7 +48,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("MainSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -69,7 +66,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("MainSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,7 +84,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("MainSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -105,7 +102,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("MainSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -159,7 +156,6 @@ animation = &"walking"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_10ed8"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ldbic"]
-graph_offset = Vector2(-801.648, 270.121)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_hqqwd")
 nodes/Add2/position = Vector2(-440, 500)
 nodes/Direction/node = SubResource("AnimationNodeBlendSpace2D_q31gm")
@@ -173,16 +169,18 @@ nodes/walk_idle/node = SubResource("AnimationNodeBlend2_10ed8")
 nodes/walk_idle/position = Vector2(-60, 460)
 node_connections = [&"Add2", 0, &"Direction", &"Add2", 1, &"Walk", &"output", 0, &"walk_idle", &"walk_idle", 0, &"Idle", &"walk_idle", 1, &"Add2"]
 
-[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vh6pj"]
+radius = 113.137
+
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("initial_state") groups=["Enemy"]]
+position = Vector2(-1, 0)
 collision_layer = 2
 collision_mask = 23
+motion_mode = 1
 script = ExtResource("1_n0g3n")
 initial_state = NodePath("States/Idle")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_cgult")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="MainSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_nek5t")
 offset = Vector2(0, -5)
@@ -190,19 +188,8 @@ hframes = 24
 vframes = 7
 frame = 48
 
-[node name="States" type="Node" parent="."]
-
-[node name="Idle" type="Node" parent="States"]
-script = ExtResource("2_bacvq")
-
-[node name="Chasing" type="Node" parent="States"]
-script = ExtResource("3_fa2kb")
-
-[node name="DetectionRange" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
-shape = SubResource("CircleShape2D_vh6pj")
+[node name="MainCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cgult")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {
@@ -213,8 +200,24 @@ parameters/Add2/add_amount = 1.0
 parameters/Direction/blend_position = Vector2(0.226686, -0.436314)
 parameters/walk_idle/blend_amount = 0.0
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_vh6pj")
+
+[node name="SightCast" type="RayCast2D" parent="."]
 collision_mask = 17
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="States" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="States"]
+script = ExtResource("2_bacvq")
+
+[node name="Chasing" type="Node" parent="States"]
+script = ExtResource("3_fa2kb")
 
 [node name="FireTimer" type="Timer" parent="."]
 autostart = true

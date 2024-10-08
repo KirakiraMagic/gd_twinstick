@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6tgxiq6whog4"
-path="res://.godot/imported/Character_2_48x48_RPGMAKER.png-30772e14cfdee6d2bfd986493e91de70.ctex"
+path="res://.godot/imported/Character_2_48x48_RPGMAKER.png-c2451b9a487bd7b6d53a1c65e5bf3502.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enviroment/Modern tiles_Free/Old/mv/Character_2_48x48_RPGMAKER.png"
-dest_files=["res://.godot/imported/Character_2_48x48_RPGMAKER.png-30772e14cfdee6d2bfd986493e91de70.ctex"]
+source_file="res://enviroment/Modern tiles_Free/Old/mv/Character_2_48x48_RPGMAKER.png"
+dest_files=["res://.godot/imported/Character_2_48x48_RPGMAKER.png-c2451b9a487bd7b6d53a1c65e5bf3502.ctex"]
 
 [params]
 

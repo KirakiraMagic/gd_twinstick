@@ -24,6 +24,7 @@ Global="*res://global.gd"
 terrain=""
 shield=""
 player=""
+Enemy=""
 
 [input]
 

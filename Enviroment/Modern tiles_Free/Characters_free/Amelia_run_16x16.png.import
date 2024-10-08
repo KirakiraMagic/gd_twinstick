@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fgupghnqh8v4"
-path="res://.godot/imported/Amelia_run_16x16.png-c76dc1da0fb464143405f95a0b73a0ab.ctex"
+path="res://.godot/imported/Amelia_run_16x16.png-7b94da0c5437588c3a888233e3e95af9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enviroment/Modern tiles_Free/Characters_free/Amelia_run_16x16.png"
-dest_files=["res://.godot/imported/Amelia_run_16x16.png-c76dc1da0fb464143405f95a0b73a0ab.ctex"]
+source_file="res://enviroment/Modern tiles_Free/Characters_free/Amelia_run_16x16.png"
+dest_files=["res://.godot/imported/Amelia_run_16x16.png-7b94da0c5437588c3a888233e3e95af9.ctex"]
 
 [params]
 
