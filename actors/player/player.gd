@@ -11,7 +11,7 @@ extends CharacterStateMachine
 @export var health : int = 5
 
 func _ready():
-	$HUD/Health.text = "Health: " + "♥".repeat(health)
+	pass
 
 func _physics_process(delta):
 
@@ -24,9 +24,11 @@ func _physics_process(delta):
 		shoot_bullet(bouncy_fruit, aim_direction)
 	if Input.is_action_just_pressed("fire_explosive"):
 		shoot_bullet(explosive_projectile, aim_direction)
-
-
-	velocity = Input.get_vector("move_left", "move_right","move_up", "move_down") * move_speed
+		
+	velocity = Input.get_vector("move_left", "move_right","move_up", "move_down")
+	if velocity.length() > 1.0:
+		velocity = velocity.normalized()
+	velocity = velocity * move_speed
 	move_and_slide()
 
 	var angle = rad_to_deg(velocity.angle()) + 180
@@ -53,7 +55,8 @@ func shoot_bullet(bullet_scene, fire_direction : Vector2):
 
 func hit(damage : int):
 	health -= damage
-	$HUD/Health.text = "Health: " + "♥".repeat(health)
+	Global.player_health_changed.emit(health)
 	if health <= 0:
-		print("YOU LOSE")
-		$HUD/Health.text = "You're Dead!"
+		GlobalAudioManager.stop()
+		GlobalAudioManager.play_sfx("res://death_sfx.mp3", 1.0)
+		Global.on_player_death.emit()

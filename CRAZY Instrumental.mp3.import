@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dr8iuh6de4j20"
+path="res://.godot/imported/CRAZY Instrumental.mp3-67f734a3620c2ab8372ec76633d245ae.mp3str"
+
+[deps]
+
+source_file="res://CRAZY Instrumental.mp3"
+dest_files=["res://.godot/imported/CRAZY Instrumental.mp3-67f734a3620c2ab8372ec76633d245ae.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=130.0
+beat_count=0
+bar_beats=4

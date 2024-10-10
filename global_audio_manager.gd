@@ -7,15 +7,17 @@ var current_music_track : AudioStream
 
 func play_track(new_stream: AudioStream, volume : float = 1.0):
 	if stream == new_stream:
+		play()
 		return
 	
 	stream = new_stream
 	volume_db = volume
 	play()
 
-func play_sfx(new_steam: AudioStream, volume := 1.0):
+func play_sfx(sound_path: String, volume := 1.0):
+	var new_stream = load(sound_path) as AudioStream
 	var sfx_player = AudioStreamPlayer2D.new()
-	sfx_player.stream = new_steam
+	sfx_player.stream = new_stream
 	sfx_player.volume_db = volume
 	add_child(sfx_player)
 	sfx_player.play()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://ynkmsw2c6vee"]
+[gd_scene load_steps=25 format=3 uid="uid://ynkmsw2c6vee"]
 
 [ext_resource type="Script" path="res://actors/enemy/basic_enemy/basic_enemy.gd" id="1_n0g3n"]
 [ext_resource type="Script" path="res://actors/enemy/basic_enemy/idle.gd" id="2_bacvq"]
 [ext_resource type="Texture2D" uid="uid://dp5jgkluioumu" path="res://enviroment/Modern tiles_Free/Characters_free/Adam_16x16.png" id="2_nek5t"]
 [ext_resource type="Script" path="res://actors/enemy/basic_enemy/chasing.gd" id="3_fa2kb"]
+[ext_resource type="Script" path="res://actors/enemy/basic_enemy/projectile_attack.gd" id="5_dsbg4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgult"]
 
@@ -156,17 +157,18 @@ animation = &"walking"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_10ed8"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ldbic"]
+graph_offset = Vector2(-360, 167.351)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_hqqwd")
-nodes/Add2/position = Vector2(-440, 500)
+nodes/Add2/position = Vector2(-100, 460)
 nodes/Direction/node = SubResource("AnimationNodeBlendSpace2D_q31gm")
-nodes/Direction/position = Vector2(-700, 420)
+nodes/Direction/position = Vector2(-360, 380)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_tq1y1")
-nodes/Idle/position = Vector2(-320, 360)
+nodes/Idle/position = Vector2(20, 320)
 nodes/Walk/node = SubResource("AnimationNodeAnimation_y4tub")
-nodes/Walk/position = Vector2(-680, 620)
+nodes/Walk/position = Vector2(-340, 580)
 nodes/output/position = Vector2(580, 440)
 nodes/walk_idle/node = SubResource("AnimationNodeBlend2_10ed8")
-nodes/walk_idle/position = Vector2(-60, 460)
+nodes/walk_idle/position = Vector2(280, 420)
 node_connections = [&"Add2", 0, &"Direction", &"Add2", 1, &"Walk", &"output", 0, &"walk_idle", &"walk_idle", 0, &"Idle", &"walk_idle", 1, &"Add2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vh6pj"]
@@ -178,6 +180,7 @@ collision_layer = 2
 collision_mask = 23
 motion_mode = 1
 script = ExtResource("1_n0g3n")
+chase_distance = 50.0
 initial_state = NodePath("States/Idle")
 
 [node name="MainSprite" type="Sprite2D" parent="."]
@@ -197,14 +200,16 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeBlendTree_ldbic")
 parameters/Add2/add_amount = 1.0
-parameters/Direction/blend_position = Vector2(0.226686, -0.436314)
+parameters/Direction/blend_position = Vector2(-0.543237, -0.176471)
 parameters/walk_idle/blend_amount = 0.0
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_vh6pj")
+metadata/_edit_lock_ = true
 
 [node name="SightCast" type="RayCast2D" parent="."]
 collision_mask = 17
@@ -213,13 +218,15 @@ collision_mask = 17
 
 [node name="States" type="Node" parent="."]
 
-[node name="Idle" type="Node" parent="States"]
+[node name="Idle" type="Node" parent="States" node_paths=PackedStringArray("chasing_state")]
 script = ExtResource("2_bacvq")
+chasing_state = NodePath("../Chasing")
 
-[node name="Chasing" type="Node" parent="States"]
+[node name="Chasing" type="Node" parent="States" node_paths=PackedStringArray("idle_state", "attack_state")]
 script = ExtResource("3_fa2kb")
+idle_state = NodePath("../Idle")
+attack_state = NodePath("../ProjectileAttack")
 
-[node name="FireTimer" type="Timer" parent="."]
-autostart = true
-
-[connection signal="timeout" from="FireTimer" to="States/Chasing" method="_on_fire_timer_timeout"]
+[node name="ProjectileAttack" type="Node" parent="States" node_paths=PackedStringArray("chasing_state")]
+script = ExtResource("5_dsbg4")
+chasing_state = NodePath("../Chasing")

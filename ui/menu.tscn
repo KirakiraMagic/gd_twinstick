@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdlso4fqjeomp"]
+
+[ext_resource type="Script" path="res://ui/menu.gd" id="1_4tg2j"]
+
+[node name="Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4tg2j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 166.0
+offset_right = 1071.0
+offset_bottom = 455.0
+color = Color(0.479723, 0.335396, 0.770131, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -455.0
+offset_top = 178.0
+offset_right = 456.0
+offset_bottom = 634.0
+grow_horizontal = 2
+
+[node name="GameNameText" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[wave][shake] Twinstick Shooter [/shake][/wave]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="DeathText" type="RichTextLabel" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]You Died[/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="start"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="resume"]
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="restart"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit"]

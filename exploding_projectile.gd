@@ -24,7 +24,8 @@ func shoot_projectile(direction : Vector2):
 
 func _on_body_entered(body):
 	if body.is_in_group("Enemy"):
-		body.hit(1)
+		body.hit(3)
+		GlobalAudioManager.play_sfx("res://metallic-clap_90bpm_D_minor.wav")
 		queue_free()
 	if body.is_in_group("terrain") or body.is_in_group("shield"):
 		queue_free()

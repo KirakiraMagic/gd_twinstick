@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp1yyscholao6"]
+[gd_scene load_steps=5 format=3 uid="uid://bp1yyscholao6"]
 
 [ext_resource type="Script" path="res://bouncy_projectile.gd" id="1_82ero"]
 [ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="1_y1dc0"]
+[ext_resource type="AudioStream" uid="uid://c54stq8t5k26v" path="res://pew-short-percussive-laser-sound-effect.wav" id="3_4fk74"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ap3e"]
 radius = 6.0
@@ -24,5 +25,9 @@ region_rect = Rect2(69, 929, 7, 9)
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4fk74")
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

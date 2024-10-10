@@ -14,6 +14,7 @@ func _on_timer_timeout():
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		body.hit(1)
+		GlobalAudioManager.play_sfx("res://metallic-clap_90bpm_D_minor.wav")
 		queue_free()
 	if body.is_in_group("terrain") or body.is_in_group("shield"):
 		queue_free()
