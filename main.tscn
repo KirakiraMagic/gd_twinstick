@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://co2t16sodsao"]
+[gd_scene load_steps=10 format=4 uid="uid://co2t16sodsao"]
 
 [ext_resource type="PackedScene" uid="uid://1b5q6glxdb0k" path="res://actors/player/player.tscn" id="1_cx507"]
 [ext_resource type="TileSet" uid="uid://poj1ahutlvfx" path="res://enviroment/enviroment_tileset.tres" id="1_q11qt"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c3ppaqrqb4xft" path="res://ui/hud.tscn" id="6_0qxds"]
 [ext_resource type="PackedScene" uid="uid://dm7udw316m2mh" path="res://actors/enemy/sword_enemy/sword_enemy.tscn" id="7_drtd3"]
 [ext_resource type="PackedScene" uid="uid://cdlso4fqjeomp" path="res://ui/menu.tscn" id="7_ipu44"]
+[ext_resource type="PackedScene" uid="uid://duoa8k61ubb4d" path="res://actors/enemy/tomes/tome_basic.tscn" id="8_iio0c"]
+[ext_resource type="PackedScene" uid="uid://b7w13rq8lnegb" path="res://actors/enemy/tomes/tome_explosive.tscn" id="9_4wabu"]
 
 [node name="Main" type="Node2D"]
 
@@ -73,31 +75,11 @@ offset_top = 133.0
 offset_right = 139.0
 offset_bottom = 183.0
 theme_override_font_sizes/font_size = 11
-text = "Normal Projectile: 
-[Space]"
-
-[node name="InstructionsLabel3" type="Label" parent="."]
-texture_filter = 1
-offset_left = -762.0
-offset_top = 379.0
-offset_right = -654.0
-offset_bottom = 414.0
-theme_override_font_sizes/font_size = 11
-text = "Exploding Projectile: 
-[Shift]"
-
-[node name="InstructionsLabel2" type="Label" parent="."]
-texture_filter = 1
-offset_left = -76.0
-offset_top = 484.0
-offset_right = 32.0
-offset_bottom = 633.0
-theme_override_font_sizes/font_size = 11
-text = "Bouncing 
-Projectile: 
-[CTRL]"
+text = "Pick up a weapon.
+Attack using SPACE or Right Click"
 
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Menu" parent="UI" instance=ExtResource("7_ipu44")]
 
@@ -138,3 +120,9 @@ position = Vector2(-914, 457)
 
 [node name="BasicEnemy6" parent="." instance=ExtResource("3_xpq84")]
 position = Vector2(-1097, 457)
+
+[node name="Tome1Weapon" parent="." instance=ExtResource("8_iio0c")]
+position = Vector2(161, 108)
+
+[node name="Tome1Weapon2" parent="." instance=ExtResource("9_4wabu")]
+position = Vector2(89, 103)

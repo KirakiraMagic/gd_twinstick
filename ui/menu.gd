@@ -20,7 +20,7 @@ func _ready():
 
 func start():
 	var audio_stream = load("res://CRAZY Instrumental.mp3") as AudioStream
-	GlobalAudioManager.play_track(audio_stream, 0)
+	#GlobalAudioManager.play_track(audio_stream, 1.0)
 	resume()
 
 func pause():

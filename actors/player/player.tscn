@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://1b5q6glxdb0k"]
+[gd_scene load_steps=11 format=3 uid="uid://1b5q6glxdb0k"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_mhq7y"]
 [ext_resource type="Texture2D" uid="uid://b0fwu8ichxvn5" path="res://enviroment/Modern tiles_Free/Characters_free/Amelia_16x16.png" id="2_5uiy0"]
-[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="3_wp8ok"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_muy1q"]
 
@@ -156,15 +155,3 @@ libraries = {
 }
 
 [node name="States" type="Node" parent="."]
-
-[node name="Weapon" type="Marker2D" parent="."]
-
-[node name="BulletSpawnPoint" type="Marker2D" parent="Weapon"]
-position = Vector2(12, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Weapon"]
-position = Vector2(12, 0)
-rotation = 1.5708
-texture = ExtResource("3_wp8ok")
-region_enabled = true
-region_rect = Rect2(84, 583, 17, 13)

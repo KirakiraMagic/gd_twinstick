@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var projectile = preload("res://projectile.tscn")
+@onready var projectile = preload("res://actors/enemy/tomes/projectile.tscn")
 const PROJECTILE_SPEED = 200
 var forward = Vector2.ZERO
 
@@ -20,10 +20,11 @@ func shoot_projectile(direction : Vector2):
 	var new_projectile = projectile.instantiate()
 	new_projectile.position = position
 	new_projectile.forward = direction
+	new_projectile.collision_mask = collision_mask
 	get_parent().add_child(new_projectile)
 
 func _on_body_entered(body):
-	if body.is_in_group("Enemy"):
+	if body.has_method("hit"):
 		body.hit(3)
 		GlobalAudioManager.play_sfx("res://metallic-clap_90bpm_D_minor.wav")
 		queue_free()

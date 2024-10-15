@@ -1,7 +1,5 @@
 extends State
 
-@onready var projectile = preload("res://enemy_projectile.tscn")
-
 @export var idle_state: State
 @export var attack_state: State
 
@@ -32,6 +30,9 @@ func process_state(delta) -> void:
 			change_state.emit(idle_state)
 	else:
 		last_target_position = target.global_position
+		if body.weapon:
+			if !body.weapon.attacking:
+				body.weapon.look_at(target.global_position)
 		chase_timeout = 0.0
 		time_since_attack += delta
 		if time_since_attack > body.attack_frequency:
@@ -39,14 +40,15 @@ func process_state(delta) -> void:
 			attack_state.target = target
 			change_state.emit(attack_state)
 
-	if body.position.distance_to(last_target_position) > body.chase_distance:
-		body.velocity = body.global_position.direction_to(last_target_position) * body.chase_speed
-		body.animation_tree.set("parameters/Direction/blend_position", body.velocity.normalized())
-		body.move_and_slide()
+	body.velocity = body.velocity.move_toward(Vector2.ZERO, delta * 4)
 
-func shoot_bullet(fire_direction : Vector2):
-	var bullet = projectile.instantiate()
-	bullet.forward = fire_direction
-	bullet.global_position = body.global_position
-	get_parent().add_child(bullet)
-	pass
+	if body.weapon:
+		if body.position.distance_to(last_target_position) > body.weapon.follow_distance:
+			body.velocity = body.global_position.direction_to(last_target_position) * body.chase_speed
+		elif body.position.distance_to(last_target_position) < body.weapon.evade_distance:
+			body.velocity = body.global_position.direction_to(last_target_position) * body.chase_speed
+			body.velocity = body.velocity.rotated(PI)
+	elif body.position.distance_to(last_target_position) > body.chase_distance:
+		body.velocity = body.global_position.direction_to(last_target_position) * body.chase_speed
+	body.animation_tree.set("parameters/Direction/blend_position", body.velocity.normalized())
+	body.move_and_slide()

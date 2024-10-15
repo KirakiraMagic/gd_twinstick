@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwtqsaqa6oejg"]
+
+[ext_resource type="PackedScene" uid="uid://1b5q6glxdb0k" path="res://actors/player/player.tscn" id="1_bn348"]
+[ext_resource type="PackedScene" uid="uid://88q44gf34xxv" path="res://actors/enemy/sword_enemy/sword.tscn" id="2_p5ysp"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_bn348")]
+position = Vector2(108, 130)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.9, 1.9)
+
+[node name="SwordWeapon" parent="Player" instance=ExtResource("2_p5ysp")]
+position = Vector2(67, 17)

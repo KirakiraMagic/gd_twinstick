@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://duoa8k61ubb4d"]
+
+[ext_resource type="Script" path="res://actors/enemy/tome1.gd" id="1_rlcpv"]
+[ext_resource type="Texture2D" uid="uid://bdv1b3gn5a4u6" path="res://enviroment/Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_ab7jb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1q04"]
+
+[node name="Tome1Weapon" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_rlcpv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u1q04")
+
+[node name="BulletSpawnPosition" type="Marker2D" parent="."]
+position = Vector2(19.84, 0)
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="BulletSpawnPosition"]
+position = Vector2(-25, 0)
+texture = ExtResource("2_ab7jb")
+offset = Vector2(25, 2.895)
+region_enabled = true
+region_rect = Rect2(123, 647, 17, 13)

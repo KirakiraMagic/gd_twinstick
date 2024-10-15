@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dp5jgkluioumu" path="res://enviroment/Modern tiles_Free/Characters_free/Adam_16x16.png" id="2_lmhf7"]
 [ext_resource type="Script" path="res://actors/enemy/basic_enemy/idle.gd" id="3_8o5lm"]
 [ext_resource type="Script" path="res://actors/enemy/basic_enemy/chasing.gd" id="4_dxb01"]
-[ext_resource type="Script" path="res://actors/enemy/sword_enemy/sword_attack.gd" id="5_t3pdh"]
+[ext_resource type="Script" path="res://actors/enemy/basic_enemy/projectile_attack.gd" id="5_g6660"]
 [ext_resource type="PackedScene" uid="uid://88q44gf34xxv" path="res://actors/enemy/sword_enemy/sword.tscn" id="6_e0nw3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgult"]
@@ -175,12 +175,13 @@ node_connections = [&"Add2", 0, &"Direction", &"Add2", 1, &"Walk", &"output", 0,
 [sub_resource type="CircleShape2D" id="CircleShape2D_vh6pj"]
 radius = 113.137
 
-[node name="SwordEnemy" type="CharacterBody2D" node_paths=PackedStringArray("initial_state") groups=["Enemy"]]
+[node name="SwordEnemy" type="CharacterBody2D" node_paths=PackedStringArray("weapon", "initial_state")]
 position = Vector2(-1, 0)
 collision_layer = 2
-collision_mask = 23
+collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_57qsy")
+weapon = NodePath("Sword")
 chase_speed = 50.0
 initial_state = NodePath("States/Idle")
 
@@ -228,9 +229,8 @@ script = ExtResource("4_dxb01")
 idle_state = NodePath("../Idle")
 attack_state = NodePath("../SwordAttack")
 
-[node name="SwordAttack" type="Node" parent="States" node_paths=PackedStringArray("chasing_state", "sword")]
-script = ExtResource("5_t3pdh")
+[node name="SwordAttack" type="Node" parent="States" node_paths=PackedStringArray("chasing_state")]
+script = ExtResource("5_g6660")
 chasing_state = NodePath("../Chasing")
-sword = NodePath("../../Sword")
 
-[node name="Sword" parent="." instance=ExtResource("6_e0nw3")]
+[node name="Sword" parent="." groups=["enemy"] instance=ExtResource("6_e0nw3")]

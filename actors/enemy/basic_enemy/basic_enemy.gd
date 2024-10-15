@@ -5,6 +5,7 @@ class_name Enemy
 @onready var detection_area : Area2D = $DetectionArea
 @onready var sight_cast : RayCast2D= $SightCast
 @onready var navigation_agent : NavigationAgent2D = $NavigationAgent2D
+@export var weapon : Weapon
 
 @export var chase_distance := 30.0
 @export var chase_speed := 20.0
@@ -12,7 +13,13 @@ class_name Enemy
 
 @export var hp := 3
 
+func initiate():
+	if weapon:
+		weapon.holder = self
+
 func hit(damage_taken: int):
 	hp -= damage_taken
 	if hp <= 0:
+		if weapon:
+			await weapon.drop()
 		queue_free()

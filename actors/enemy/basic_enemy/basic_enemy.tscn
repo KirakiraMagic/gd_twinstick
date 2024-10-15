@@ -174,10 +174,10 @@ node_connections = [&"Add2", 0, &"Direction", &"Add2", 1, &"Walk", &"output", 0,
 [sub_resource type="CircleShape2D" id="CircleShape2D_vh6pj"]
 radius = 113.137
 
-[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("initial_state") groups=["Enemy"]]
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("initial_state") groups=["Enemy", "enemy"]]
 position = Vector2(-1, 0)
 collision_layer = 2
-collision_mask = 23
+collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_n0g3n")
 chase_distance = 50.0

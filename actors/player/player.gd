@@ -1,12 +1,16 @@
 extends CharacterStateMachine
 
-@onready var projectile = preload("res://projectile.tscn")
-@onready var bouncy_fruit = preload("res://bouncy.tscn")
-@onready var explosive_projectile = preload("res://exploding_projectile.tscn")
-@onready var weapon = $Weapon
-@onready var projectile_spawn_point = $Weapon/BulletSpawnPoint
 @onready var animation_player = $AnimationPlayer
 @export var move_speed : float = 60.0
+
+@export var weapon : Weapon
+
+@export var dodge_speed := 300.0
+@export var dodge_duration := 0.1
+
+var is_dodging := false
+var dodge_timer := 0.0
+var dodge_direction := Vector2.ZERO
 
 @export var health : int = 5
 
@@ -15,24 +19,40 @@ func _ready():
 
 func _physics_process(delta):
 
-	var aim_direction = position.direction_to(get_global_mouse_position())
-	weapon.global_rotation = aim_direction.angle()
-
-	if Input.is_action_just_pressed("fire_normal"):
-		shoot_bullet(projectile, aim_direction)	
-	if Input.is_action_just_pressed("fire_bouncy"):
-		shoot_bullet(bouncy_fruit, aim_direction)
-	if Input.is_action_just_pressed("fire_explosive"):
-		shoot_bullet(explosive_projectile, aim_direction)
-		
-	velocity = Input.get_vector("move_left", "move_right","move_up", "move_down")
+	var direction = Input.get_vector("move_left", "move_right","move_up", "move_down")
+	velocity = direction
 	if velocity.length() > 1.0:
 		velocity = velocity.normalized()
 	velocity = velocity * move_speed
-	move_and_slide()
 
+	if Input.is_action_just_pressed("dodge_roll"):
+		is_dodging = true
+		dodge_timer = 0
+		dodge_direction = direction
+
+	if is_dodging:
+		dodge_timer += delta
+		velocity = dodge_direction * dodge_speed
+		if dodge_timer >= dodge_duration:
+			is_dodging = false
+			dodge_timer = 0
+
+	var aim_direction = position.direction_to(get_global_mouse_position())
+	if weapon:
+		if not weapon.attacking: 
+			weapon.global_rotation = aim_direction.angle()
+	
+	if Input.is_action_just_pressed("fire_normal"):
+		if weapon:
+			await weapon.attack(get_global_mouse_position())
+			print(weapon.durability <= 0) #I have no idea why but this print statement fixes the logic
+			if weapon.durability <= 0:
+				weapon.queue_free()
+				weapon = null
+
+	move_and_slide()
+	
 	var angle = rad_to_deg(velocity.angle()) + 180
-	print(angle)
 
 	if velocity.length() < 10.0:
 		animation_player.play("idle_front")
@@ -46,14 +66,9 @@ func _physics_process(delta):
 		elif angle > 45.0 and angle < 135.0:
 			animation_player.play("walk_back")
 
-func shoot_bullet(bullet_scene, fire_direction : Vector2):
-	var bullet = bullet_scene.instantiate()
-	bullet.forward = fire_direction
-	bullet.position = projectile_spawn_point.global_position
-	get_parent().add_child(bullet)
-	pass
-
 func hit(damage : int):
+	if is_dodging:
+		return
 	health -= damage
 	Global.player_health_changed.emit(health)
 	if health <= 0:
