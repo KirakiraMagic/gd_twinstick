@@ -15,6 +15,8 @@ var dodge_direction := Vector2.ZERO
 @export var health : int = 5
 
 func _ready():
+	if Global.checkpoint_pos != Vector2.ZERO:
+		global_position = Global.checkpoint_pos
 	pass
 
 func _physics_process(delta):

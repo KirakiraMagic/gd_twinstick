@@ -57,6 +57,11 @@ visible = false
 layout_mode = 2
 text = "Resume"
 
+[node name="RespawnButton" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Respawn"
+
 [node name="RestartButton" type="Button" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
@@ -68,5 +73,6 @@ text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="start"]
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="resume"]
+[connection signal="pressed" from="VBoxContainer/RespawnButton" to="." method="_on_respawn_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="restart"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit"]

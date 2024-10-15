@@ -1,5 +1,8 @@
 extends Node
 
+var checkpoint_pos = Vector2.ZERO
+var respawn = false
+
 signal player_health_changed(new_health: int)
 signal on_player_death()
 
