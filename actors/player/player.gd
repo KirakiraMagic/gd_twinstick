@@ -12,9 +12,11 @@ var is_dodging := false
 var dodge_timer := 0.0
 var dodge_direction := Vector2.ZERO
 
-@export var health : int = 5
+@export var max_health : int = 5
+var health : int
 
 func _ready():
+	health = max_health
 	if Global.checkpoint_pos != Vector2.ZERO:
 		global_position = Global.checkpoint_pos
 	pass

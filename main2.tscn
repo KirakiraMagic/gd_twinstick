@@ -81,9 +81,6 @@ position = Vector2(273, 52)
 [node name="TomeBasicWeapon" parent="." instance=ExtResource("7_arrpj")]
 position = Vector2(166, 104)
 
-[node name="SwordEnemy3" parent="." instance=ExtResource("6_653p7")]
-position = Vector2(453, 103)
-
 [node name="BasicEnemy3" parent="." instance=ExtResource("8_olo2v")]
 position = Vector2(-474, 492)
 

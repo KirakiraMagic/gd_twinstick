@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://dm7udw316m2mh"]
 
 [ext_resource type="Script" path="res://actors/enemy/basic_enemy/basic_enemy.gd" id="1_57qsy"]
-[ext_resource type="Texture2D" uid="uid://dp5jgkluioumu" path="res://enviroment/Modern tiles_Free/Characters_free/Adam_16x16.png" id="2_lmhf7"]
+[ext_resource type="Texture2D" uid="uid://bruerfqwbfhue" path="res://enviroment/Modern tiles_Free/Characters_free/Bob_16x16.png" id="2_uhxdk"]
 [ext_resource type="Script" path="res://actors/enemy/basic_enemy/idle.gd" id="3_8o5lm"]
 [ext_resource type="Script" path="res://actors/enemy/basic_enemy/chasing.gd" id="4_dxb01"]
 [ext_resource type="Script" path="res://actors/enemy/basic_enemy/projectile_attack.gd" id="5_g6660"]
@@ -187,7 +187,7 @@ initial_state = NodePath("States/Idle")
 
 [node name="MainSprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_lmhf7")
+texture = ExtResource("2_uhxdk")
 offset = Vector2(0, -5)
 hframes = 24
 vframes = 7
