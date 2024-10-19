@@ -30,4 +30,6 @@ func hit(damage_taken: int):
 			get_parent().add_child(new_heart)
 		if weapon:
 			await weapon.drop()
-		queue_free()
+			queue_free()
+		else:
+			queue_free()

@@ -50,5 +50,5 @@ func process_state(delta) -> void:
 			body.velocity = body.velocity.rotated(PI)
 	elif body.position.distance_to(last_target_position) > body.chase_distance:
 		body.velocity = body.global_position.direction_to(last_target_position) * body.chase_speed
-	body.animation_tree.set("parameters/Direction/blend_position", body.velocity.normalized())
+	body.animation_tree.set("parameters/Direction/blend_position", body.velocity)
 	body.move_and_slide()

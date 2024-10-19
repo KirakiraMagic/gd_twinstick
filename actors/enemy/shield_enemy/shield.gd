@@ -7,7 +7,7 @@ func attack(target_position):
 	var fire_direction = holder.global_position.direction_to(target_position)
 	var bullet = projectile.instantiate()
 	bullet.forward = fire_direction
-	bullet.global_position = global_position
+	bullet.global_position = $Shield/Marker2D.global_position
 	if holder.is_in_group("player"):
 		bullet.set_collision_mask_value(1, false)
 		bullet.set_collision_mask_value(2, true)
@@ -18,3 +18,5 @@ func attack(target_position):
 	if holder.is_in_group("player"):
 		durability -= 1
 	attacking = false
+	emit_signal("attack_complete")
+	return true

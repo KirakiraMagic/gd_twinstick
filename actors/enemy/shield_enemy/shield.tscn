@@ -33,3 +33,6 @@ rotation = -1.5708
 texture = ExtResource("1_23a57")
 region_enabled = true
 region_rect = Rect2(38, 754, 20, 5)
+
+[node name="Marker2D" type="Marker2D" parent="Shield"]
+position = Vector2(26, 0)

@@ -2,6 +2,7 @@ extends Area2D
 class_name Weapon
 
 signal attack_complete
+signal dropped
 
 @export var durability := 5
 @export var follow_distance := 50.0

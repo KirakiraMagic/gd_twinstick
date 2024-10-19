@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwtqsaqa6oejg"]
 
 [ext_resource type="PackedScene" uid="uid://1b5q6glxdb0k" path="res://actors/player/player.tscn" id="1_bn348"]
-[ext_resource type="PackedScene" uid="uid://ynkmsw2c6vee" path="res://actors/enemy/basic_enemy/basic_enemy.tscn" id="2_qrux0"]
 [ext_resource type="PackedScene" uid="uid://duoa8k61ubb4d" path="res://actors/enemy/tomes/tome_basic.tscn" id="3_5tm3y"]
+[ext_resource type="PackedScene" uid="uid://dv2yqfbwxt37k" path="res://actors/enemy/shield_enemy/shield_enemy.tscn" id="3_p41sk"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,7 +12,8 @@ position = Vector2(108, 130)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.9, 1.9)
 
-[node name="BasicEnemy" parent="." instance=ExtResource("2_qrux0")]
-position = Vector2(14, 179)
+[node name="TomeBasicWeapon" parent="." instance=ExtResource("3_5tm3y")]
+position = Vector2(49, 119)
 
-[node name="TomeBasicWeapon" parent="BasicEnemy" instance=ExtResource("3_5tm3y")]
+[node name="ShieldEnemy" parent="." instance=ExtResource("3_p41sk")]
+position = Vector2(-53, 159)
